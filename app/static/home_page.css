@@ -1,0 +1,119 @@
+body {
+    background-color: #DBD071;
+
+}
+
+.header {
+    width: 1340px;
+    height: 47px;
+    background: #E0A100;
+    margin: -9px 180px;
+    position: fixed;
+    
+
+
+}
+
+.logo {
+    width: 189px;
+    height: 186px;
+    background: #FFBD12;
+    position: fixed;
+    margin: -9px;
+    
+    
+
+}
+
+.name {
+    width: 465px;
+    height: 217px;
+    top: 40px;
+    left: 204px;
+    position: fixed;
+    font-size: 48px;
+    color: #6D6A18;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.about {
+    width: 56px;
+    height: 24px;
+    top: -5px;
+    left: 228px;
+    font-size: 20px;
+    position: fixed;
+
+
+}
+
+.auth {
+    width: 98px;
+    height: 29px;
+    top: -5px;
+    left: 1057px;
+    font-size: 20px;
+    position: fixed;
+
+}
+
+.reg {
+    width: 152px;
+    height: 29px;
+    top: -5px;
+    left: 1155px;
+    font-size: 20px;
+    position: fixed;
+
+}
+
+.card {
+    width: 219px;
+    height: 268px;
+    top: 276px;
+    left: 65px;
+    background: #99742C;
+    position: fixed;
+
+}
+
+.name-zone {
+    width: 219px;
+    height: 51px;
+    top: 493px;
+    left: 65px;
+    position: fixed;
+    background: #CEA333;
+
+}
+
+.item-name {
+    width: 96px;
+    height: 22px;
+    top: 485px;
+    left: 79px;
+    font-size: 20px;
+    position: fixed;
+
+}
+
+.profile {
+    width: 98px;
+    height: 29px;
+    top: -5px;
+    left: 959px;
+    font-size: 20px;
+    position: fixed;
+    
+}
+
+.logout {
+    width: 98px;
+    height: 29px;
+    top: -5px;
+    left: 890px;
+    font-size: 20px;
+    position: fixed;
+
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/profile.css">
+</head>
+<body>
+    <div class="name-box">
+        <h1 class="name">ГастарбайтерЛюкс</h1>
+    </div>
+    {%if current_user.is_authenticated and currentuser==id_ %}
+     <form method="post" enctype="multipart/form-data">
+        <input class="photo" type="file" id="photo" name="photo" placeholder="Аватар">
+         <button id="upload-button">Загрузить аватар</button>
+     </form>
+    {%endif%}
+    {% if user_photo.photo_path and current_user.is_authenticated %}
+     {%if currentuser==id_%}
+      <a class="detele-photo" href="/delete_photo/{{current_user.get_id()}}">Удалить фото</a>
+     {%endif%}
+    {%endif%}
+    <div class="photo-box">
+        {% if user_photo.photo_path %}
+         <img class="avatar" alt="image" id="photoinput" src="{{ url_for('static', filename='avatars/' + user_photo.photo_path) }}"></img>
+        {% else %}
+         <img class="avatar" alt="image" id="photoinput" src="{{ url_for('static', filename='avatars/'+'4-26.jpg' ) }}"></img>
+        {% endif %}
+
+        {% with messages = get_flashed_messages() %}
+         {% if messages %}
+          {% for message in messages %}
+            <div class="message" role="alert">{{ message }}</div>
+          {% endfor %}
+         {% endif %}
+       {% endwith %}
+    </div>
+    <div class="container">
+        <span class="name-surname"><u>{{name_username.first_name }} {{ name_username.last_name }}</u></span>
+        <p class="profession-description"><b>Профессия:</b><i> {{ name_username.profession }}</i><br><br><b>Описание профиля:</b> {{profile_info.profile_descr}}</br></br></p>
+
+        <h1 class="exp"><b>Стаж:</b><i> {{profile_info.work_exp_y}}</i><br><br><b>Опыт:</b><i> {{profile_info.work_exp_p}}</i></br></br></h1>
+
+        <h1 class="docs">Документы</h1>
+        <p class="gr-r-i"><b>Гражданство:</b><i> {{profile_info.citizen}}</i><br><b>Разрешение на работу:</b><i> {{profile_info.work_accept}}</i></br><br><b>Иные документы:</b><i> {{profile_info.other_docs}}</i></br></p>
+
+        <h1 class="svyaz"><b>Данные для связи:</b></h1>
+        <p class="n-sn"><b>Номер телефона:</b><i> {{profile_info.phone}}</i><br><b>Социальные сети:</b><i> {{profile_info.nets}}</i></br></p>
+        {%if current_user.is_authenticated and currentuser==id_ %}
+         <button  class="change" onclick="openModal()">Изменить</button>
+        {%endif%}
+    </div>   
+    <!-- Модальное окно -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <!-- Здесь можно разместить форму для ввода данных -->
+            <form onsubmit="return validateForm()" method="post">
+                <label for="descr">Описание профиля</label><br>
+                <input type="text" id="descr" name="descr" value="{{profile_info.profile_descr}}"><br><br>
+                <label for="exp1">Стаж</label><br>
+                <input type="text" id="exp1" name="exp1" value="{{profile_info.work_exp_y}}"><br><br>
+                <p class="errormessage"></p>
+                <label for="exp2">Опыт</label><br>
+                <input type="text" id="exp2" name="exp2" value="{{profile_info.work_exp_p}}"><br><br>
+                <label for="gr">Гражданство</label><br>
+                <input type="text" id="gr" name="gr" value="{{profile_info.citizen}}"><br><br>
+                <label for="workac">Разрешение на работу</label><br>
+                <input type="text" id="workac" name="workac" value="{{profile_info.work_accept}}"><br><br>
+                <label for="otherd">Иные документы</label><br>
+                <input type="text" id="otherd" name="otherd" value="{{profile_info.other_docs}}"><br><br>
+                <label for="phone">Номер телефона</label><br>
+                <input type="text" id="phone" name="phone" value="{{profile_info.phone}}"><br><br>
+                <label for="socn">Социальные сети</label><br>
+                <input type="text" id="socn" name="socn" value="{{profile_info.nets}}"><br><br>
+                <p class="error-message"></p>
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Открытие модального окна
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        // Закрытие модального окна
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+
+        function validateForm() {
+            var inputs = document.querySelectorAll('.modal-content input[type="text"]');
+            var errorMessage = document.querySelector('.error-message');
+            var errorMessage2 = document.querySelector('.errormessage')
+            // Проверка на пустые поля
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].value.trim() === "") {
+                    errorMessage.innerHTML = "Заполните все поля!";
+                    return false; // Отмена отправки формы
+                }
+            }
+            var expInput = document.getElementById("exp1");
+            if (isNaN(expInput.value) || !isFinite(expInput.value)) {
+                errorMessage2.innerHTML = "Пожалуйста, введите числовое значение для стажа.";
+                return false; // Отменяем отправку формы
+            }
+            errorMessage.innerHTML = ""; // Очистка сообщения об ошибке
+            return true; // Отправка формы
+        }
+
+
+    </script>
+</body>
+</html>

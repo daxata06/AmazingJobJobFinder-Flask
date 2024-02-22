@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/static/register.css">
+<body>
+ 
+
+ <form method="post" class="container">
+  <h1 class="text">РЕГИСТРАЦИЯ</h1>
+  <div class="input-group">
+    <input type="text" placeholder="Имя" id="fname" name="fname" class="first-name">
+  </div>
+  <div class="input-group">
+    <input type="text" placeholder="Фамилия" id="lname" name="lname" class="last-name">
+  </div>
+  <div class="input-group">
+    <input type="text" placeholder="Ваша профессия" id="prof" name="prof" class="profession">
+  </div>
+  <div class="input-group">
+    <input type="email" placeholder="Email" id="email" name="email" class="e-mail">
+  </div>
+  <div class="input-group">
+    <input type="password" placeholder="Пароль" id="pas" name="pas" class="password">
+  </div>
+  <div class="input-group">
+    <input type="password" placeholder="Повторите пароль" id="repas" name="repas" class="repassword">
+  </div>
+  {% with messages = get_flashed_messages() %}
+   {% if messages %}
+    {% for message in messages %}
+     <div class="alert alert-warning" role="alert">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <button class="button" type="submit">Войти</button>
+  <p class="text-logo">ГастарбайтерЛюкс</p>
+</form>
+
+</body>
+</html>

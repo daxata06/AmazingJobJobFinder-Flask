@@ -68,33 +68,47 @@ body {
 
 }
 
-.card {
+
+
+.cards {
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center;
+    margin-top: 200px;
+    position: fixed; /* Центрирование по вертикали */
+}
+
+
+
+.avatar {
     width: 219px;
     height: 268px;
-    top: 276px;
-    left: 65px;
     background: #99742C;
-    position: fixed;
+    margin: 10px;
+
 
 }
 
 .name-zone {
     width: 219px;
     height: 51px;
-    top: 493px;
-    left: 65px;
-    position: fixed;
     background: #CEA333;
-
+    position: fixed;
+    margin-left: 10px;
+    margin-top: -15px;
 }
+
 
 .item-name {
     width: 96px;
     height: 22px;
     top: 485px;
-    left: 79px;
+    margin-left: 10px;
+    margin-top: -4px;
     font-size: 20px;
     position: fixed;
+
+   
 
 }
 
@@ -116,4 +130,13 @@ body {
     font-size: 20px;
     position: fixed;
 
+}
+
+.random {
+    font-weight: bold;
+    color: #cb9f30;
+    position: fixed;
+    margin-top: 192px;
+    font-size: 18px;
+    -webkit-text-stroke: 1px black;
 }

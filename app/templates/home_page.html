@@ -4,33 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/home_page.css">
 </head>
-<link rel="stylesheet" type="text/css" href="/static/home_page.css">
 <body>
-  
-   <div class="card">
-    <div class="name-zone">
-      <p class="item-name">Название</p>
-    </div>
-   </div>
-   <div class="logo"></div>
-   <div class="header">
+    <div class="logo"></div>
+    <div class="header">
         <p class="about">О нас</p>
         {% if current_user.is_anonymous %}
-         <p class="auth"><a href="/login">Вход</a></p>
-         <p class="reg"><a href="/register">Регистрация</a></p>
+            <p class="auth"><a href="/login">Вход</a></p>
+            <p class="reg"><a href="/register">Регистрация</a></p>
         {% endif %}
         {% if current_user.is_authenticated %}
-         <p class="profile"><a href="/profile/{{current_user.get_id()}}">Мой профиль</a></p>
-         <p class="logout"><a href="/logout">Выйти</a></p>
+            <p class="profile"><a href="/profile/{{current_user.get_id()}}">Мой профиль</a></p>
+            <p class="logout"><a href="/logout">Выйти</a></p>
         {% endif %}
-        
     </div>
     <h1 class="name">ГастарбайтерЛюкс</h1>
-    
-   
-   
-    
-
+    <p class="random" >Случайные соискатели</p>
+    <div class="cards">
+     {% for names in name_username %}
+        <div class="card">
+          <div class="photobox">
+            <img class="avatar" src="{{ avatars_urls.get(names.id_) }}">
+          </div>
+          <div class="name-zone">
+              <p class="item-name"><a href="/profile/{{names.id_}}">{{names.first_name}} {{names.last_name}}</a></p>
+          </div>
+        </div>
+     {% endfor %}
+    </div>
 </body>
 </html>

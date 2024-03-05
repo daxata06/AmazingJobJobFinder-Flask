@@ -55,3 +55,14 @@ def create_new_id():
    all_ = db.engine.execute('select count(id_) from users').scalar()
 
    return all_+1
+
+def get_avatar(id_):
+   photo = db.engine.execute(f'select photo_path from avatars where user_id={id_}').scalar()
+
+   if photo:
+   
+    return f'static/avatars/{photo}'
+   
+   else:
+     
+     return 'static/avatars/4-26.jpg'

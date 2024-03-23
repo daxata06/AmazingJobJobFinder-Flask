@@ -1,0 +1,144 @@
+body {
+    background-color: #DBD071;
+}
+
+.search {
+    margin-left: 35%;
+    width: 400px;
+    height: 400px;
+    margin-top: 130px;
+    position: absolute;
+}
+
+.search-place {
+    width: 400px;
+    height: 30px;
+    font-size: 16px;
+    position: fixed;
+}
+
+.btn {
+    position: fixed;
+    margin-top: 33px;
+    background: #E0A100;
+}
+
+.header {
+    width: 1340px;
+    height: 47px;
+    background: #E0A100;
+    margin: -9px 180px;
+    position: fixed;
+    
+
+
+}
+
+.logo {
+    width: 189px;
+    height: 186px;
+    background: #FFBD12;
+    position: fixed;
+    margin: -9px;     
+
+}
+
+.about {
+    width: 56px;
+    height: 24px;
+    top: -5px;
+    left: 228px;
+    font-size: 20px;
+    position: fixed;
+
+
+}
+
+.auth {
+    width: 98px;
+    height: 29px;
+    top: -5px;
+    left: 1057px;
+    font-size: 20px;
+    position: fixed;
+
+}
+
+.reg {
+    width: 152px;
+    height: 29px;
+    top: -5px;
+    left: 1155px;
+    font-size: 20px;
+    position: fixed;
+
+}
+
+.name {
+    width: 465px;
+    height: 217px;
+    top: 40px;
+    left: 204px;
+    position: fixed;
+    font-size: 48px;
+    color: #6D6A18;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.cards {
+  margin-right: 35%;
+  margin-top: 180px;
+  position: relative;
+}
+
+.card {
+    width: 400px;
+    height: 100px;
+    border-color:#6D6A18;
+    border-style: dashed;
+    border-width: 10px;
+    margin-right: 400px;
+    margin: 10px;
+}
+
+.photo { 
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    margin-top: -115px;
+    margin-left: 115%;
+}
+
+.profile {
+    width: 98px;
+    height: 29px;
+    top: -5px;
+    left: 959px;
+    font-size: 20px;
+    position: fixed;
+    display: inline-block;
+    
+}
+
+.logout {
+    width: 98px;
+    height: 29px;
+    top: -5px;
+    left: 890px;
+    font-size: 20px;
+    position: fixed;
+    display: inline-block;
+
+}
+
+.search-logo {
+    width: 98px;
+    height: 29px;
+    top: -5px;
+    left: 821px;
+    font-size: 20px;
+    position: fixed;
+    display: inline-block;
+
+}

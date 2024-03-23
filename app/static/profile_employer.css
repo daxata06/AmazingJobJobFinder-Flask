@@ -1,0 +1,65 @@
+.name-surname {
+    color: white;
+    font-size: 26px;
+}
+
+.profs_, .company_ {
+    color: white;
+}
+
+body {
+    background-color: #DBD071;
+
+}
+
+.container {
+    width: 665px;
+    height: 612px;
+    background: #AA7E10;
+    margin-left: 500px;
+}
+
+.name-box {
+    width: 233px;
+    height: 29px;
+}
+
+.requests {
+    background: #AA7E10;
+    width: 265px;
+    height: 212px;
+    margin-top: 300px;
+    position: fixed;
+}
+
+.info{
+    text-align: center;
+}
+
+.invite {
+    background: #AA7E10;
+    margin-top: 320px;
+    position: fixed;
+
+}
+
+.form_invite {
+    border-color:#DBD071;
+    border-width: 7px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    margin: 2px;
+}
+
+.s {
+    color: yellow;
+}
+
+.r {
+    color: red;
+}
+
+.ap {
+    color: green;
+}

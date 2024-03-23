@@ -1,0 +1,22 @@
+body {
+    background-color: #DBD071;
+}
+
+
+.notf {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 200px;
+}
+
+.name {
+    width: 465px;
+    height: 217px;
+    top: 40px;
+    left: 204px;
+    position: fixed;
+    font-size: 48px;
+    color: #6D6A18;
+    font-family: 'Times New Roman', Times, serif;
+
+}

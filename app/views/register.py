@@ -8,6 +8,8 @@ from flask_login import login_user, current_user, logout_user
 
 @views.route('/register', methods=['POST', 'GET'])
 def reg():
+    if current_user.is_authenticated:
+       return redirect('/')
    
     if request.method == 'POST':
       fname = request.form['fname'] 
@@ -54,12 +56,18 @@ def reg():
 
 @views.route('/login', methods=['POST', 'GET'])
 def aut():
+   if current_user.is_authenticated:
+       return redirect('/')
+   
    if request.method == 'POST':
       email = request.form['email']
       password = request.form['pas']
 
       if email and password:
          User = users.query.filter_by(email=email).first()
+
+         if User is None:
+            User = users_employers.query.filter_by(email=email).first()
 
          if check_password_hash(User.password, password):
 
@@ -76,6 +84,58 @@ def logout():
      logout_user()
 
      return redirect('/')
+   
+
+@views.route('/register_employer', methods=['POST', 'GET'])
+def reg_emp():
+     if current_user.is_authenticated:
+        return redirect('/')
+     
+     if request.method == 'POST':
+
+      fname = request.form['fname'] 
+      lname = request.form['lname']
+      profession = request.form['prof']
+      email = request.form['email']
+      password = request.form['pas']
+      repassword = request.form['repas']
+      company = request.form['company']
+
+      if password == repassword:
+         hash = generate_password_hash(password)
+         id_=create_new_id()
+
+         try:
+          items = users_employers(id_=id_,
+                      first_name=fname,
+                      last_name=lname,
+                      email = email,
+                      password=hash,
+                      professions=profession,
+                      company_name=company)
+          
+          db.session.add(items)
+
+          db.session.commit()
+
+          User = users_employers.query.filter_by(id_=id_).first()
+
+          login_user(User)
+
+          return redirect('/')
+      
+         except Exception as e:
+            print(e)
+            
+            flash('Что-то пошло не так')
+
+      else:
+         
+         flash('Пароли не совпадают!')
+         
+              
+     return render_template("register_emp.html") 
+     
 
 
 

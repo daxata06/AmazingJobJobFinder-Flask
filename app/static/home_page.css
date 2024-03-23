@@ -65,6 +65,7 @@ body {
     left: 1155px;
     font-size: 20px;
     position: fixed;
+    display: inline-block;
 
 }
 
@@ -129,6 +130,7 @@ body {
     left: 890px;
     font-size: 20px;
     position: fixed;
+    display: inline-block;
 
 }
 
@@ -139,4 +141,25 @@ body {
     margin-top: 192px;
     font-size: 18px;
     -webkit-text-stroke: 1px black;
+}
+
+.search-logo {
+    width: 98px;
+    height: 29px;
+    top: -5px;
+    left: 821px;
+    font-size: 20px;
+    position: fixed;
+    display: inline-block;
+
+}
+
+.for-e{
+    width: 98px;
+    height: 29px;
+    top: -5px;
+    left: 1280px;
+    font-size: 20px;
+    position: fixed;
+
 }

@@ -1,4 +1,4 @@
-GastarbaiterLux (ГастарбайтерЛюкс) job finder
+GastarbaiterLux (ГастарбайтерЛюкс) job finder\n
 pet-project
 
 Stack: Flask, Sqlalchemy, Postgresql

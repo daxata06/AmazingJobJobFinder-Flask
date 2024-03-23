@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск</title>
+   
+</head>
+<link rel="stylesheet" type="text/css" href="/static/search.css">
+<body>
+<h1 class="name">ГастарбайтерЛюкс</h1> 
+<div class="logo"></div>
+    <div class="header">
+        <p class="about">О нас</p>
+        {% if current_user.is_anonymous %}
+            <p class="auth"><a href="/login">Вход</a></p>
+            <p class="reg"><a href="/register">Регистрация</a></p>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+            <p class="profile"><a href="/profile/{{current_user.get_id()}}">Мой профиль</a></p>
+            <p class="logout"><a href="/logout">Выйти</a></p>
+        {% endif %}
+            <p class="search-logo"><a href="/">На главную</a></p>
+    </div>
+    <form class="search" method="post">
+        <input name="profession" class="search-place" id="profession" placeholder="Введите профессию"></input>
+        <button class="btn" type="submit">Поиск</button>
+     <div class="cards">
+        {% for item in datas %}
+        <div class="card">
+            <p class="nam"><a href="/profile/{{item.id_}}">{{ item.first_name }} {{ item.last_name }}</a></p>
+            <h1 class="prof">{{ item.profession }}</h1>
+            <img class="photo" src="{{ avatars_urls.get(item.id_) }}">
+        </div>
+        {% endfor %}
+     </div>
+   </form>
+</body>
+</html>

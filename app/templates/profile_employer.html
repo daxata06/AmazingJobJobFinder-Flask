@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link rel="stylesheet" type="text/css" href="/static/profile_employer.css">
+</head>
+<body>
+    <div class="name-box">
+        <h1 class="name">ГастарбайтерЛюкс</h1>
+    </div>
+    {%if current_user.is_authenticated and currentuser==id_ %}
+    <div class="requests">
+        <p class="info">Мои приглашения</p>
+        {%for invite in invites %}
+         <form class="form_invite">
+             <a href="/profile/{{invite.id_to}}">{{names.get(invite.id_to)}}</a>
+             {%if invite.status=='sent'%}
+              <a class="a">Приглашение <i class="s">отправлено</i></a>
+             {%elif invite.status=='approved'%}
+              <a class="a">Приглашение <i class="ap">принято</i></a>
+             {%elif invite.status=='rejected'%}
+              <a class="a">Приглашение <i class="r">отклонено</i></a>
+             {%endif%}
+         </form>
+        {%endfor%}
+     </div>
+     {%endif%}
+    <div class="container">
+        <span class="name-surname"><u>{{datas.first_name }} {{ datas.last_name }}</u></span>
+        <h1 class="profs"><i class="profs_">Работники по профессиям в поиске:</i> {{datas.professions}}</h1>
+        <h1 class="company"><i  class="company_">Название компании:</i> {{datas.company_name}}</h1>
+    </div>   
+
+</body>
+</html>

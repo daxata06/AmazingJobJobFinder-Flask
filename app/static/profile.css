@@ -74,3 +74,66 @@ body {
     position: fixed;
 }
 
+.requests {
+    background: #AA7E10;
+    width: 265px;
+    height: 212px;
+    margin-top: 350px;
+    position: fixed;
+}
+
+.info{
+    text-align: center;
+}
+
+.invite {
+    background: #AA7E10;
+    margin-top: 320px;
+    position: fixed;
+
+}
+
+.form_invite {
+    border-color:#DBD071;
+    border-width: 7px;
+}
+
+.y {
+    background: green;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none;
+    color: black;
+
+}
+
+.n {
+    background: red;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none;
+    color: black;
+}
+
+.a {
+    color: black;
+}
+
+.upl {
+    margin-top: 20px;
+    position: fixed;
+}
+
+.avatar {
+    border-width: 5px;
+    border-style: solid;
+    border-color: #AA7E10;
+}
+
+
+
+
+
+

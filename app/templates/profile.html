@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Профиль</title>
     <link rel="stylesheet" type="text/css" href="/static/profile.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
         <h1 class="name">ГастарбайтерЛюкс</h1>
     </div>
     {%if current_user.is_authenticated and currentuser==id_ %}
-     <form method="post" enctype="multipart/form-data">
+     <form class="upl" method="post" enctype="multipart/form-data">
         <input class="photo" type="file" id="photo" name="photo" placeholder="Аватар">
          <button id="upload-button">Загрузить аватар</button>
      </form>
@@ -36,6 +36,37 @@
          {% endif %}
        {% endwith %}
     </div>
+    {%if current_user.is_authenticated and currentuser==id_ %}
+    <div class="requests">
+        <p class="info">Приглашения от работодателей</p>
+        {%for invite in all_invites %}
+         <form class="form_invite">
+             <a href="/company/{{invite.id_from}}">{{company_nms.get(invite.id_from)}}</a>
+             {%if invite.status=='sent'%}
+              <a class="y" href="/approve/{{invite.id_from}}/{{invite.id_to}}">Принять</a>
+              <a class="n" href="/reject/{{invite.id_from}}/{{invite.id_to}}">Отклонить</a>
+             {%elif invite.status=='approved'%}
+              <a class="a">Принято</a>
+             {%elif invite.status=='rejected'%}
+              <a class="a">Отклонено</a>
+             {%endif%}
+         </form>
+        {%endfor%}
+    </div>
+    {%endif%}
+    {%if is_company %}
+     <form class="inviter" method="POST">
+     {%if not invite_st %}
+      <button class="invite">Пригласить соискателя</button>
+     {%elif invite_st=='sent'%}
+      <p class="invite">Вы уже отправили приглашение этому пользователю</p>
+     {%elif invite_st=='approved'%}
+      <p class="invite">Приглашение было принято!</p>
+     {%elif invite_st=='rejected'%}
+      <p class="invite">Предложение было отклонено</p>
+     {%endif%}
+     </form>
+    {%endif%}
     <div class="container">
         <span class="name-surname"><u>{{name_username.first_name }} {{ name_username.last_name }}</u></span>
         <p class="profession-description"><b>Профессия:</b><i> {{ name_username.profession }}</i><br><br><b>Описание профиля:</b> {{profile_info.profile_descr}}</br></br></p>

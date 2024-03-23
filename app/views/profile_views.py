@@ -14,6 +14,19 @@ def profile_view(id_):
 
     user_photo = avatars.query.filter_by(user_id=id_).first()
 
+    if name_username is None:
+      return render_template("not_found.html")
+    
+    is_company=False
+    c_id = current_user.get_id()
+    company_check = users_employers.query.filter_by(id_=c_id).first()
+    invite_st=None
+
+    if company_check:
+      is_company=True
+      invite_st=check_application(id_=id_)
+      print(invite_st)
+
     if request.method == 'POST':
 
         if 'photo' in request.files and request.files['photo'].filename:
@@ -37,6 +50,18 @@ def profile_view(id_):
            db.session.commit()
 
            return redirect(f'/profile/{id_}')
+        
+        elif is_company==True:
+
+          datas = Applications(id_req=create_new_id_application(),
+                          id_from=c_id,
+                          id_to=id_,
+                          status='sent')
+          
+          db.session.add(datas)
+          db.session.commit()
+
+          return redirect(f'/profile/{id_}')
 
         elif 'exp1' in request.form:
 
@@ -77,17 +102,27 @@ def profile_view(id_):
 
           flash("Фото не было загружено!")
         
-    currentuser = int(current_user.get_id())
+    
+    currentuser = 0
 
-    if currentuser is None:
-        currentuser=0
-     
+    if current_user.get_id() != None:
+
+     currentuser = int(current_user.get_id())
+
+    all_invites = Applications.query.filter_by(id_to=id_).all()
+    company_nms = {company.id_from: get_company_name(company.id_from) for company in all_invites}
+
+
     return render_template("profile.html", 
                            name_username=name_username, 
                            profile_info=profile_info,
                            user_photo=user_photo,
                            id_=int(id_),
-                           currentuser=currentuser)
+                           currentuser=currentuser,
+                           is_company=is_company,
+                           invite_st=invite_st,
+                           company_nms=company_nms,
+                           all_invites=all_invites)
 
 
 @views.route('/delete_photo/<int:id_>', methods=['POST', 'GET'])
@@ -100,3 +135,39 @@ def delete_photo(id_):
    os.remove(Config.UPLOAD_FOLDER+user_photo.photo_path)
   
   return redirect(f'/profile/{id_}')
+
+@views.route('/company/<int:id_>', methods=['POST', 'GET'])
+def company_view(id_):
+  datas = users_employers.query.filter_by(id_=id_).first()
+
+  invites = Applications.query.filter_by(id_from=id_).all()
+  names = {user.id_to: get_name(user.id_to) for user in invites}
+
+  currentuser = 0
+
+  if current_user.get_id() != None:
+
+     currentuser = int(current_user.get_id())
+
+  if datas is None:
+      return render_template("not_found.html")
+
+  return render_template("profile_employer.html", 
+                         datas=datas,
+                         id_=int(id_),
+                         invites=invites,
+                         names=names,
+                         currentuser=currentuser)
+
+
+@views.route('/approve/<int:id_from>/<int:id_to>', methods=['POST', 'GET'])
+def approving_application(id_from, id_to):
+  update_app_st(id_from, id_to,'approved')
+  
+  return redirect(f'/profile/{id_to}')
+
+@views.route('/reject/<int:id_from>/<int:id_to>', methods=['POST', 'GET'])
+def rejecting_application(id_from, id_to):
+  update_app_st(id_from, id_to,'rejected')
+  
+  return redirect(f'/profile/{id_to}')

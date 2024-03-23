@@ -57,7 +57,7 @@
     </li>
 </ul>
 
-<p>Following the link below, you can see the video provides how to the website works.</p>
+<p>Following the link below, you can see the video demonstrates how the website works.</p>
 
 </body>
 </html>

@@ -14,7 +14,7 @@
 
 <h3>About:</h3>
 <p>
-    The website for job searching, includes 2 modes for register: applicant mode; employer mode.
+    The website for job search, includes 2 modes for register: applicant mode; employer mode.
 </p>
 
 <h3>Modules:</h3>

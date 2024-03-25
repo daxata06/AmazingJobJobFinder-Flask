@@ -57,7 +57,7 @@
     </li>
 </ul>
 
-<p>Following the link below, you can see the video demonstrates how the website works.
+<p>Following the link, you can see the video demonstrates how the website works.
     https://youtu.be/L1d1sHjNQE4
 </p>
 

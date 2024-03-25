@@ -52,7 +52,7 @@
         <p>
             On the main page depending of user status are provide: auth/register (if user is not authorized), link to profile view (if user is authorized). Also for both groups: link to search view.
             <br>When any user opens the main page he can see 5 cards of random applicants. Any user can open any profile of any user and check their information.
-            <br>Employers play a key role on the website. They select applicants and can invite their uses the special button (invite the applicant, пригласить соискателя). After this applicant can make a desigion uses two buttons (approve/reject). After this, employer will see the user`s desigion on his profile page.
+            <br>Employers play a key role on the website. They select applicants and can invite their using the special button (invite the applicant, пригласить соискателя). After this applicant can make a desigion using two buttons (approve/reject). After this, employer will see the user`s desigion on his profile page.
         </p>
     </li>
 </ul>

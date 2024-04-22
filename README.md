@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>GastarbaiterLux (ГастарбайтерЛюкс) Job Finder</h1>
+<h1>AmazingJob Job Finder</h1>
 <h2>pet-project</h2>
 
 <h3>Stack:</h3>
